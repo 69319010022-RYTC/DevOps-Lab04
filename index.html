@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="th">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GreenFix IT Support</title>
+    <style>
+      :root {
+        --green-900: #0f3d2e;
+        --green-800: #155b45;
+        --green-700: #1d7a5f;
+        --green-600: #2ea372;
+        --green-500: #6ad0a3;
+        --green-100: #edf9f1;
+        --white: #ffffff;
+        --gray-100: #f5f7f6;
+        --gray-200: #e8ecea;
+        --gray-300: #d3d9d6;
+        --gray-600: #4d5c57;
+        --gray-900: #16201d;
+        --shadow: 0 18px 40px rgba(15, 61, 46, 0.12);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(180deg, var(--green-100) 0%, #f9fffb 20%, var(--white) 100%);
+        color: var(--gray-900);
+      }
+
+      a {
+        text-decoration: none;
+      }
+
+      .container {
+        width: min(1120px, calc(100% - 32px));
+        margin: 0 auto;
+      }
+
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        background: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba(17, 73, 58, 0.08);
+      }
+
+      .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 76px;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-weight: 800;
+        color: var(--green-900);
+        letter-spacing: 0.02em;
+      }
+
+      .brand-mark {
+        width: 38px;
+        height: 38px;
+        border-radius: 12px;
+        background: linear-gradient(135deg, var(--green-700), var(--green-500));
+        display: grid;
+        place-items: center;
+        color: var(--white);
+        font-size: 1.1rem;
+        box-shadow: var(--shadow);
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 28px;
+        color: var(--gray-600);
+        font-weight: 600;
+      }
+
+      .nav-links a {
+        color: var(--gray-600);
+      }
+
+      .nav-actions {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 14px 22px;
+        border-radius: 14px;
+        border: none;
+        cursor: pointer;
+        font-weight: 700;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .btn:hover {
+        transform: translateY(-1px);
+      }
+
+      .btn-primary {
+        background: linear-gradient(135deg, var(--green-700), var(--green-600));
+        color: var(--white);
+        box-shadow: var(--shadow);
+      }
+
+      .btn-secondary {
+        background: var(--white);
+        color: var(--green-900);
+        border: 1px solid rgba(21, 91, 69, 0.12);
+      }
+
+      .hero {
+        padding: 72px 0 48px;
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        align-items: center;
+        gap: 40px;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 14px;
+        border-radius: 999px;
+        background: var(--green-100);
+        color: var(--green-800);
+        font-weight: 700;
+        font-size: 0.85rem;
+        margin-bottom: 18px;
+      }
+
+      .eyebrow::before {
+        content: "";
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--green-600);
+        box-shadow: 0 0 0 6px rgba(46, 163, 114, 0.12);
+      }
+
+      h1 {
+        font-size: clamp(2.3rem, 5vw, 4.5rem);
+        line-height: 1.08;
+        margin: 0 0 18px;
+        color: var(--green-900);
+      }
+
+      .hero p {
+        font-size: 1.08rem;
+        line-height: 1.8;
+        color: var(--gray-600);
+        max-width: 620px;
+      }
+
+      .cta-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+        margin-top: 30px;
+      }
+
+      .stats {
+        display: flex;
+        gap: 22px;
+        margin-top: 32px;
+        flex-wrap: wrap;
+      }
+
+      .stat {
+        min-width: 120px;
+      }
+
+      .stat strong {
+        display: block;
+        color: var(--green-900);
+        font-size: 1.6rem;
+      }
+
+      .stat span {
+        color: var(--gray-600);
+        font-size: 0.94rem;
+      }
+
+      .hero-panel {
+        position: relative;
+        padding: 22px;
+      }
+
+      .card {
+        background: linear-gradient(180deg, #ffffff, #f4faf6);
+        border: 1px solid rgba(20, 98, 76, 0.08);
+        border-radius: 28px;
+        box-shadow: var(--shadow);
+      }
+
+      .ticket-box {
+        position: relative;
+        padding: 24px 24px 20px;
+      }
+
+      .ticket-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 18px;
+      }
+
+      .ticket-title {
+        font-weight: 800;
+        font-size: 1.1rem;
+        color: var(--green-900);
+      }
+
+      .status-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 10px;
+        border-radius: 999px;
+        background: #ebfff3;
+        color: var(--green-800);
+        font-size: 0.8rem;
+        font-weight: 700;
+      }
+
+      .status-pill::before {
+        content: "";
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--green-600);
+      }
+
+      .ticket-card {
+        background: linear-gradient(180deg, #f7fbf8, #eef9f2);
+        border: 1px solid #dfece5;
+        border-radius: 20px;
+        padding: 20px;
+      }
+
+      .row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 16px;
+      }
+
+      .label {
+        color: var(--gray-600);
+        font-size: 0.86rem;
+      }
+
+      .value {
+        font-weight: 700;
+        color: var(--gray-900);
+      }
+
+      .progress {
+        height: 12px;
+        background: var(--gray-200);
+        border-radius: 999px;
+        overflow: hidden;
+        margin: 18px 0 8px;
+      }
+
+      .progress-bar {
+        width: 78%;
+        height: 100%;
+        border-radius: inherit;
+        background: linear-gradient(90deg, var(--green-500), var(--green-700));
+      }
+
+      .mini-panel {
+        position: absolute;
+        right: -18px;
+        bottom: -14px;
+        width: 200px;
+        background: var(--white);
+        border: 1px solid rgba(19, 92, 69, 0.1);
+        border-radius: 18px;
+        box-shadow: var(--shadow);
+        padding: 16px;
+      }
+
+      .mini-panel .icon {
+        width: 42px;
+        height: 42px;
+        border-radius: 12px;
+        background: linear-gradient(135deg, var(--green-700), var(--green-500));
+        display: grid;
+        place-items: center;
+        color: var(--white);
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+      }
+
+      .mini-panel strong {
+        display: block;
+        color: var(--green-900);
+        font-size: 1.2rem;
+      }
+
+      .mini-panel span {
+        color: var(--gray-600);
+        font-size: 0.84rem;
+      }
+
+      section {
+        padding: 40px 0;
+      }
+
+      .section-head {
+        text-align: center;
+        margin-bottom: 28px;
+      }
+
+      .section-head h2 {
+        margin: 0 0 12px;
+        font-size: clamp(1.9rem, 3vw, 2.7rem);
+        color: var(--green-900);
+      }
+
+      .section-head p {
+        margin: 0;
+        color: var(--gray-600);
+        font-size: 1.02rem;
+      }
+
+      .features {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 24px;
+      }
+
+      .feature {
+        background: var(--white);
+        border: 1px solid rgba(15, 61, 46, 0.08);
+        border-radius: 22px;
+        padding: 26px 22px;
+        box-shadow: 0 12px 24px rgba(15, 61, 46, 0.04);
+      }
+
+      .feature-icon {
+        width: 56px;
+        height: 56px;
+        border-radius: 16px;
+        background: linear-gradient(135deg, var(--green-100), var(--green-500));
+        color: var(--green-900);
+        font-size: 1.5rem;
+        display: grid;
+        place-items: center;
+        margin-bottom: 18px;
+      }
+
+      .feature h3 {
+        margin: 0 0 12px;
+        font-size: 1.2rem;
+        color: var(--green-900);
+      }
+
+      .feature p {
+        margin: 0;
+        color: var(--gray-600);
+        line-height: 1.7;
+      }
+
+      .service-box {
+        background: linear-gradient(135deg, var(--green-900), var(--green-700));
+        border-radius: 28px;
+        padding: 32px;
+        color: var(--white);
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        align-items: center;
+        gap: 24px;
+        box-shadow: var(--shadow);
+      }
+
+      .service-box h3 {
+        margin: 0 0 12px;
+        font-size: clamp(1.8rem, 3vw, 2.8rem);
+      }
+
+      .service-box p {
+        margin: 0;
+        color: rgba(255, 255, 255, 0.8);
+        line-height: 1.8;
+      }
+
+      .simple-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: grid;
+        gap: 12px;
+      }
+
+      .simple-list li {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        background: rgba(255, 255, 255, 0.08);
+        padding: 12px 14px;
+        border-radius: 14px;
+        font-weight: 600;
+      }
+
+      .simple-list li::before {
+        content: "✓";
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.16);
+        display: inline-grid;
+        place-items: center;
+        font-size: 0.8rem;
+      }
+
+      footer {
+        padding: 28px 0 44px;
+        text-align: center;
+        color: var(--gray-600);
+      }
+
+      @media (max-width: 900px) {
+        .nav-links {
+          display: none;
+        }
+
+        .hero-grid,
+        .service-box,
+        .features {
+          grid-template-columns: 1fr;
+        }
+
+        .mini-panel {
+          position: static;
+          margin-top: 16px;
+          width: 100%;
+        }
+      }
+
+      @media (max-width: 620px) {
+        .nav {
+          gap: 16px;
+          flex-wrap: wrap;
+          justify-content: center;
+          padding: 10px 0;
+        }
+
+        .nav-actions {
+          width: 100%;
+          justify-content: center;
+        }
+
+        .hero {
+          padding-top: 44px;
+        }
+
+        .stats {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container nav">
+        <div class="brand">
+          <div class="brand-mark">IT</div>
+          <span>GreenFix Support</span>
+        </div>
+
+        <nav class="nav-links" aria-label="Main navigation">
+          <a href="#features">บริการ</a>
+          <a href="#process">กระบวนการ</a>
+          <a href="#reviews">รีวิว</a>
+          <a href="#contact">ติดต่อ</a>
+        </nav>
+
+        <div class="nav-actions">
+          <button class="btn btn-secondary">เข้าสู่ระบบ</button>
+          <button class="btn btn-primary">แจ้งปัญหา</button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container hero-grid">
+          <div>
+            <div class="eyebrow">ตอบเร็ว • ให้บริการ 24/7</div>
+            <h1>เราแก้ปัญหา IT ให้กลับมาทำงานก่อนที่ธุรกิจของคุณจะหยุดชะงัก</h1>
+            <p>
+              แจ้งปัญหาจากอุปกรณ์ชำรุด ซอฟต์แวร์ผิดปกติ หรือระบบเครือข่ายล่ม
+              ทีม IT Support ของเราจะตอบกลับอย่างรวดเร็ว เพื่อให้ระบบกลับมาทำงาน
+              ปกติและปกป้องข้อมูลสำคัญของคุณ
+            </p>
+
+            <div class="cta-row">
+              <button class="btn btn-primary">แจ้งซ่อมทันที</button>
+              <button class="btn btn-secondary">ดูขั้นตอนการทำงาน</button>
+            </div>
+
+            <div class="stats">
+              <div class="stat">
+                <strong>15 นาที</strong>
+                <span>ตอบกลับเฉลี่ย</span>
+              </div>
+              <div class="stat">
+                <strong>99.8%</strong>
+                <span>อัตราการแก้ปัญหา</span>
+              </div>
+              <div class="stat">
+                <strong>24/7</strong>
+                <span>เฝ้าระวัง</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-panel">
+            <div class="card ticket-box">
+              <div class="ticket-top">
+                <div class="ticket-title">Ticket #GF-1048</div>
+                <div class="status-pill">กำลังดำเนินการ</div>
+              </div>
+
+              <div class="ticket-card">
+                <div class="row">
+                  <div class="label">ประเภทปัญหา</div>
+                  <div class="value">เครื่องพิมพ์ออฟไลน์</div>
+                </div>
+
+                <div class="row">
+                  <div class="label">ผู้รับผิดชอบ</div>
+                  <div class="value">ทีม IT Support</div>
+                </div>
+
+                <div class="row">
+                  <div class="label">เวลาโดยประมาณ</div>
+                  <div class="value">ภายใน 30 นาที</div>
+                </div>
+
+                <div class="progress">
+                  <div class="progress-bar"></div>
+                </div>
+                <div class="label">แก้ไขแล้ว 78%</div>
+              </div>
+            </div>
+
+            <div class="mini-panel">
+              <div class="icon">⚡</div>
+              <strong>12,480</strong>
+              <span>เคสที่แก้ไขสำเร็จในปีนี้</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="features">
+        <div class="container">
+          <div class="section-head">
+            <h2>ทุกสิ่งที่คุณต้องการเพื่อให้ IT ทำงานราบรื่น</h2>
+            <p>บริการสำหรับอุปกรณ์ ระบบเครือข่าย และปัญหาผู้ใช้งานในองค์กรของคุณ</p>
+          </div>
+
+          <div class="features">
+            <article class="feature">
+              <div class="feature-icon">🖥️</div>
+              <h3>ซ่อมคอมพิวเตอร์และอุปกรณ์</h3>
+              <p>ซ่อม Notebook Desktop เครื่องพิมพ์ และอุปกรณ์สำนักงานต่าง ๆ ด้วยทีมช่างที่เชี่ยวชาญ</p>
+            </article>
+
+            <article class="feature">
+              <div class="feature-icon">🔐</div>
+              <h3>ความปลอดภัยและสิทธิ์การใช้งาน</h3>
+              <p>แก้ไขปัญหา login รีเซ็ตรหัสผ่าน การจัดการสิทธิ์ และตรวจสอบความปลอดภัยระบบ</p>
+            </article>
+
+            <article class="feature">
+              <div class="feature-icon">🌐</div>
+              <h3>Support เครือข่าย</h3>
+              <p>วินิจฉัยปัญหาอินเทอร์เน็ต Wi-Fi VPN และการเชื่อมต่อที่ผิดปกติภายในองค์กร</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="process">
+        <div class="container">
+          <div class="service-box">
+            <div>
+              <h3>กระบวนการง่าย เร็วและตรงจุด</h3>
+              <p>
+                แจ้งปัญหา เลือกผู้รับผิดชอบ และติดตามความคืบหน้าอย่างชัดเจน
+                จนกว่าปัญหาจะถูกแก้ไขเรียบร้อย
+              </p>
+            </div>
+
+            <ul class="simple-list">
+              <li>แจ้งปัญหา</li>
+              <li>จัดลำดับความสำคัญและมอบหมายทีม</li>
+              <li>ติดตามความคืบหน้าแบบ real-time</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="reviews">
+        <div class="container">
+          <div class="section-head">
+            <h2>ได้รับความไว้วางใจจากทีมที่ไม่สามารถทนต่อ downtime ได้</h2>
+          </div>
+
+          <div class="features">
+            <article class="feature">
+              <div class="feature-icon">⭐</div>
+              <h3>“ตอบเร็วและมืออาชีพ”</h3>
+              <p>“ปัญหาเครื่องพิมพ์ของเราเริ่มแก้ไขภายในชั่วโมงแรก และทีมคอยอัพเดตตลอดเวลา”</p>
+            </article>
+
+            <article class="feature">
+              <div class="feature-icon">⭐</div>
+              <h3>“บริการที่เชื่อถือได้”</h3>
+              <p>“ระบบแจ้งปัญหาง่ายต่อการใช้งาน และทุกเคสได้รับการจัดการอย่างชัดเจน”</p>
+            </article>
+
+            <article class="feature">
+              <div class="feature-icon">⭐</div>
+              <h3>“บริการยอดเยี่ยม”</h3>
+              <p>“หลังจากใช้ระบบนี้ ระยะเวลาหยุดทำงานลดลงอย่างเห็นได้ชัด”</p>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer id="contact">
+      <div class="container">
+        <div class="btn btn-primary">ติดต่อ IT Support</div>
+        <p style="margin-top: 18px;">support@greenfix.example • +66 2 000 0000</p>
+      </div>
+    </footer>
+  </body>
+</html>
